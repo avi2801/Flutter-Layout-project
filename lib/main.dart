@@ -4,7 +4,13 @@ void main() =>runApp(MaterialApp(
   home:NinjaCard(),
 ));
 
-class NinjaCard extends StatelessWidget {
+class NinjaCard extends StatefulWidget {
+  @override
+  _NinjaCardState createState() => _NinjaCardState();
+}
+
+class _NinjaCardState extends State<NinjaCard> {
+  int counter=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +20,18 @@ class NinjaCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            counter+=1;
+          });
+        },
+        child:Icon(
+          Icons.add
+        ),
+        backgroundColor: Colors.grey[800],
+
       ),
       body:Padding(
         padding: EdgeInsets.fromLTRB(30,40,30,0),
@@ -46,14 +64,14 @@ class NinjaCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                 )),
             SizedBox(height:30),
-            Text("City :",
+            Text("Roll No:",
                 style:TextStyle(
                     color: Colors.white,
                     fontSize: 16,
                     letterSpacing: 2.0
                 )),
             SizedBox(height: 10,),
-            Text("Jalandhar",
+            Text("$counter",
                 style:TextStyle(
                   color: Colors.amberAccent[200],
                   fontSize: 25,
@@ -86,5 +104,7 @@ class NinjaCard extends StatelessWidget {
     );
   }
 }
+
+
 
 
